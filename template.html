@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	body, html {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.block {
+		height: 50%;
+		width: 50%;
+		float: left;
+		background-color: black;
+		color: white;
+		overflow: hidden;
+	}
+
+	.block > .window {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.block > .window > h2 {
+		margin: 0;
+		padding: 0 .5em;
+		background-color: #900;
+		border: 2px solid #800;
+	}
+
+	.block > .window > .code {
+		overflow: auto;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		font-family: "Lucida Console", Monaco, monospace;
+	}
+</style>
+</head>
+<body>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			window.createBlock = function(title) {
+				window.document.write('<div class="block"><div class="window"><h2>'+title+'</h2><div class="code"></div></div></div>');
+			};
+
+			window.createBlock('One');
+			window.createBlock('Two');
+			window.createBlock('Three');
+			// window.createBlock('Four');
+
+			setInterval(function() {
+				$(".code").each(function(index, element) {
+					$(element).html($(element).html()+"["+new Date().toString()+"]$ something else<br />");
+					$(element).html($(element).html()+"["+new Date().toString()+"]$ something else<br />");
+					$(element).html($(element).html()+"["+new Date().toString()+"]$ something else<br />");
+					$(element).html($(element).html()+"["+new Date().toString()+"]$ something else<br />");
+					$(element).html($(element).html()+"["+new Date().toString()+"]$ something else<br />");
+				});
+				// $(".block code").text($(".block code").text()+"something<br />\n");
+			}, 5000);
+		}(jQuery));
+	</script>
+</body>
+</html>
